@@ -24,8 +24,8 @@ class LinearRegression(object):
             pred=X.dot(self.coef_)
             for j in xrange(0,X.shape[1]):
                 tmp=X[:,j]
-                errors = (pred - y) * tmp#element-wise multi
-                self.coef_[j]=self.coef_[j] - self.lr * np.mean(errors)
+                errors = np.mean((pred - y) * tmp)#element-wise multi
+                self.coef_[j]=self.coef_[j] - self.lr * errors
         return self.coef_
 
     def fit(self,X,y):
@@ -33,6 +33,7 @@ class LinearRegression(object):
             X = np.hstack([X,np.ones((X.shape[0],1))])
 
         if self.solver=="ls":
+            #self.coef_=np.dot(np.linalg.inv(np.dot(X.T, X)),np.dot(X.T, y))
             self.coef_=np.linalg.lstsq(X,y)[0]
         else:
             self.coef_=np.zeros(X.shape[1])
