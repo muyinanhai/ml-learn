@@ -1,4 +1,5 @@
 ## Linear Regression
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 The objective of linear regression is to minimise the cost fucntion:
 $$
 J(\theta)=\frac{1}{2}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^{2}
